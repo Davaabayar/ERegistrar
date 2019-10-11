@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="description"
+	content="ERegistrar demo application for Spring WebMVC">
+<meta name="author" content="B.Davaabayar">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">
+<link
+	href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+
+<title>E Registrar</title>
+</head>
+<body>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
+		id="mainNav">
+		<div class="container">
+			<a class="navbar-brand" href="/eregistrar/home">E Registrar</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu <i class="fas fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link"
+						href="/eregistrar/home">Home</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/eregistrar/students/list">Students</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Page Header -->
+	<header class="masthead" style="background-image: url('/img/bg.jpg')">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-10 mx-auto">
+					<div class="site-heading">
+						<h1>Welcome to MUM</h1>
+					</div>
+				</div>
+			</div>
+	</header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>
+					Implementing a new Spring Web Application - eRegistrar <span
+						style="font-size: 24px;">(30 points)</span>
+				</h2>
+				<p>Create a new springboot-springwebmvc webapp named,
+					eRegistrar, which is an online Registration system for a
+					University, which you should implement as follows:</p>
+				<div style="padding-left: 40px;">
+					<p>Using Spring Boot, implement a simple enterprise web
+						application named eRegistrar. Your implementation should make use
+						of the following tools, technologies, frameworks and APIs: Spring
+						Web MVC, Thymeleaf, JPA and a relational database. You are
+						expected to implement the following 4 basic use-cases:</p>
+					<ol>
+						<li>Display a homepage for the web app (e.g. url -
+							http://localhost/eregistrar/home etc) which presents menu
+							items/links on a navigation bar.</li>
+						<li>Display List of Students - presents to the user, a list
+							of all the students who have been registered in the university.
+							You may display the data in an html grid or table or an ordered
+							list.</li>
+						<li>Register a New Student - enables the user (i.e. the
+							university registrar) to add a new Student into the system, using
+							a web form UI.</li>
+						<li>Edit a Student's registration data.</li>
+						<li>Delete a student's registration data.</li>
+					</ol>
+				</div>
+				<strong>Note: </br>The specification for Student is as follows:</strong>
+				<ul>
+					<li>studentId : (should be primary key field)</li>
+					<li>studentNumber: e.g. 000-61-0001 (required)</li>
+					<li>FirstName: e.g. Anna (required)</li>
+					<li>MiddleName: (optional)</li>
+					<li>LastName: e.g. Smith (required)</li>
+					<li>cgpa: e.g. 3.78 (optional)</li>
+					<li>enrollmentDate: e.g. 2019-5-12 (required)</li>
+					<li>isInternational: (values: "Yes", "No") (required) - Hint:
+						Implement/present this data in a drop-down list</li>
+				</ul>
+				</p>
+				<p>
+					<strong>When complete:</strong>Take screenshots of your eRegistrar
+					screens and add them to a subfolder inside your project named
+					screenshots; zip your project folder into a zip file named,
+					eregistrar.zip and upload/Submit here on Sakai or push to your
+					github and submit its url to sakai. (Advice: Use the elibrary
+					project as a guide)
+				</p>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+</body>
+</html>
