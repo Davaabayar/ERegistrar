@@ -64,13 +64,17 @@
                 </thead>
                 <tbody>
                 <tr th:each="stu,iterStat : ${students}">
-                    <th scope="row" th:text="${iterStat.count}"></th>
+                	<th scope="row" th:text="${iterStat.count}"></th>
                     <td th:text="${stu.studentNumber}"></td>
                     <td th:text="${stu.firstName}"></td>
                     <td th:text="${stu.middleName}"></td>
                     <td th:text="${stu.lastName}"></td>
                     <td th:text="${stu.cgpa}"></td>
                     <td th:text="${stu.enrollmentDate}"></td>
+                    <!-- <td>
+                    	<span th:if="${stu.isInternational}">Yes</span>
+                    	<span th:unless="${stu.isInternational}">No</span>
+                    </td> -->
                     <td><a th:href="@{'/eregistrar/student/edit/{studentId}'(studentId=${stu.studentId})}">Edit</a></td>
                     <td><a data-toggle="modal" data-target="#confirmDeleteStudentModal" th:href="@{'/eregistrar/student/delete/' + ${stu.studentId}}">Delete</a></td>
                 </tr>

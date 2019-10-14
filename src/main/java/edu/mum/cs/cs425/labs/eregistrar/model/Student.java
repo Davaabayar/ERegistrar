@@ -32,10 +32,10 @@ public class Student {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate enrollmentDate;
 	
-	/*
-	 * @NotBlank(message="* Is international required.") private String
-	 * isInternational;
-	 */
+	
+	 //@NotBlank(message="* Is international required.") 
+	 private Boolean isInternational;
+	
 
 	public Student() {
 		super();
