@@ -49,19 +49,18 @@
 		<div class="overlay"></div>
 	</header>
 	<div class="container" style="max-width: 500px;">
-		<h1>Add Student</h1>
-		<form id="newStudentForm" method="post" action="/eregistrar/student/new" th:object="${student}">
+		<h1>Update student with ID:[[${student.studentId}]]</h1>
+		<form id="editStudentForm" method="post" action="/eregistrar/student/edit" th:object="${student}">
 		  <input type="hidden" name="studentId" th:value="${student.studentId}"/>
 			<fieldset>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">
-							<label for="studentNumber">Student Number <span style="color: red">*</span></label> 
-							<span th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"
-							 class="alert alert-danger"></span>
+							<label for="studentNumber">Student Number <span
+								style="color: red">*</span></label> 
 							<input id="studentNumber" name="studentNumber"
 								type="text" class="form-control"
-								th:value="${student.studentNumber}">
+								th:value="${student.studentNumber}" required="required">
 						</div>
 					</div>
 				</div>
@@ -69,10 +68,7 @@
 					<div class="col-md-12">
 						<div class="form-group">
 							<label for="firstName">First Name <span
-								style="color: red">*</span></label> 
-								<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
-							 class="alert alert-danger"></span>
-								<input id="firstName"
+								style="color: red">*</span></label> <input id="firstName"
 								name="firstName" type="text" class="form-control"
 								th:value="${student.firstName}" required="required">
 						</div>
@@ -81,10 +77,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="middleName">Middle Name</label>
-							<span th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"
-							 class="alert alert-danger"></span>
-							<input
+							<label for="middleName">Middle Name</label> <input
 								id="middleName" name="middleName" type="text"
 								class="form-control" th:value="${student.middleName}">
 						</div>
@@ -92,8 +85,6 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="lastName">Last Name <span style="color: red">*</span></label>
-							<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-							 class="alert alert-danger"></span>
 							<input id="lastName" name="lastName" type="text"
 								class="form-control" th:value="${student.lastName}"
 								required="required">
@@ -106,9 +97,7 @@
 							<label for=cgpa>GPA</label> <input id="cgpa" name="cgpa"
 								type="text" class="form-control" aria-describedby="cgpaHelp"
 								placeholder="0.00" pattern="^[0-4]{1}(?:\.[0-9]{2})?$"
-								th:value="${student.cgpa}">
-								<span th:if="${#fields.hasErrors('cgpa')}" th:errors="*{cgpa}"
-							 class="alert alert-danger"></span>								 
+								th:value="${student.cgpa}"> 
 								<small id="cgpaHelp"
 								class="form-text text-muted">Enter a valid GPA (e.g.
 								4.00)</small>
@@ -119,10 +108,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="enrollmentDate">Enrolled <span
-								style="color: red">*</span></label> 
-								<span th:if="${#fields.hasErrors('enrollmentDate')}" th:errors="*{enrollmentDate}"
-							 class="alert alert-danger"></span>		
-								<input id="enrollmentDate"
+								style="color: red">*</span></label> <input id="enrollmentDate"
 								name="enrollmentDate" type="date" class="form-control"
 								th:value="${student.enrollmentDate}" required="required">
 						</div>
@@ -142,9 +128,9 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<a href="/eregistrar/student/new" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+						<a href="/eregistrar/student/edit" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
 						<button id="btnSubmit" type="submit"
-							class="btn btn-outline-success">Save Student</button>
+							class="btn btn-outline-success">Update Student</button>
 					</div>
 				</div>
 	</div>

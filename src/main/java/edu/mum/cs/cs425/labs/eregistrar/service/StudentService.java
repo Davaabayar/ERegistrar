@@ -10,4 +10,7 @@ public interface StudentService {
 	public abstract Iterable<Student> getAllStudents();
 	public abstract Page<Student> getAllStudentsPaged(int pageno);
 	public abstract Student saveStudent(Student student);
+	public abstract Student getStudentByStudentId(Long studentId);
+	public abstract Student updateStudentById(Student editedStudent, Long studentId);
+	public abstract void deleteStudentById(Long studentId);
 }

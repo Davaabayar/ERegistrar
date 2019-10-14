@@ -8,7 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="students")
@@ -16,7 +17,7 @@ public class Student {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer studentId;
+	private Long studentId;
 	@NotBlank(message="* Student number is required.")
 	private String studentNumber;
 	
@@ -27,6 +28,8 @@ public class Student {
 	@NotBlank(message="* Last name is required.")
 	private String lastName;
 	private String cgpa;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate enrollmentDate;
 	
 	/*
@@ -41,11 +44,11 @@ public class Student {
 
 
 
-	public Integer getStudentId() {
+	public Long getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(Integer studentId) {
+	public void setStudentId(Long studentId) {
 		this.studentId = studentId;
 	}
 
@@ -99,11 +102,10 @@ public class Student {
 
 
 
-	public Student(Integer studentId, String studentNumber,
+	public Student(String studentNumber,
 			String firstName, String middleName,
 			String lastName, String cgpa, LocalDate enrollmentDate) {
 		super();
-		this.studentId = studentId;
 		this.studentNumber = studentNumber;
 		this.firstName = firstName;
 		this.middleName = middleName;

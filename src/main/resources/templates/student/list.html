@@ -64,7 +64,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="stu,iterStat : ${students}">
-                    <!--th:onclick="@{document.location='/eregister/student/edit/{studentId}'(studentId=${student.studentId})}" -->
                     <th scope="row" th:text="${iterStat.count}"></th>
                     <td th:text="${stu.studentNumber}"></td>
                     <td th:text="${stu.firstName}"></td>
@@ -72,8 +71,8 @@
                     <td th:text="${stu.lastName}"></td>
                     <td th:text="${stu.cgpa}"></td>
                     <td th:text="${stu.enrollmentDate}"></td>
-                    <td><a th:href="@{'/eregister/student/edit/{studentId}'(studentId=${stu.studentId})}">Edit</a></td>
-                    <td><a data-toggle="modal" data-target="#confirmDeleteBookModal" th:href="@{'/eregister/student/delete/' + ${stu.studentId}}">Delete</a></td>
+                    <td><a th:href="@{'/eregistrar/student/edit/{studentId}'(studentId=${stu.studentId})}">Edit</a></td>
+                    <td><a data-toggle="modal" data-target="#confirmDeleteStudentModal" th:href="@{'/eregistrar/student/delete/' + ${stu.studentId}}">Delete</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -85,12 +84,32 @@
                     </li>
                     <li th:each="i : ${#numbers.sequence(1, students.totalPages)}"
                         th:class="${currentPageNo}==${i-1}?'page-item active':'page-item'">
-                        <a th:href="@{/eregister/student/list(pageno=${i-1})}"
+                        <a th:href="@{/eregistrar/students/list(pageno=${i-1})}"
                            th:text="${i}" class = "page-link"></a>
                     </li>
                 </ul>
             </div>
 
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="#confirmDeleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Confirm Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you wish to delete this student data?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary">Yes</button>
+                </div>
+            </div>
         </div>
     </div>
   
