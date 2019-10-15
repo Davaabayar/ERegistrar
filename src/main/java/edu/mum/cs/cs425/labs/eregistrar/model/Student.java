@@ -100,6 +100,18 @@ public class Student {
 		this.enrollmentDate = enrollmentDate;
 	}
 
+	
+
+	public Boolean getIsInternational() {
+		return isInternational;
+	}
+
+
+
+	public void setIsInternational(Boolean isInternational) {
+		this.isInternational = isInternational;
+	}
+
 
 
 	public Student(String studentNumber,

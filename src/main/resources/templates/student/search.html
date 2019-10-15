@@ -22,25 +22,35 @@
 	</header>
   <div style="padding-top:1em;" class="container">
        <div>
-           <h1>Student list</h1>
-           <span th:if="${query!=null}" th:text="'Search result for:'+${query}"></span>
-           <span style="float:right;">
-               <a class="btn btn-outline-success btn-sm" href="/eregistrar/student/new">Add New Student</a>
-           </span>
+           <h1>Search Student</h1>
+           <form class="form-inline my-lg-0" id="searchStudentForm" method="get" action="/eregistrar/student/search" >
+               <input id="searchStudent" name="query" class="form-control col-md-7 col-sm-12" type="text" th:value="${query}" placeholder="Search" >
+               <select name="type" id="type" class="form-control col-md-2 col-sm-6">
+               		<option value="name" th:selected="${type=='name'}">Name</option>
+               		<option value="studentNumber"  th:selected="${type=='studentNumber'}">Student number</option>
+               		<option value="gpa" th:selected="${type=='gpa'}">GPA</option>               		
+               </select>
+               <button id="btnSubmit" type="submit" class="btn btn-success col-lg-3 col-sm-6" style="padding: 8px 25px;">Search Student</button>
+           </form>
+          
+           <strong>
+               <span>Search result </span>
+	           <span th:if="${type!=''}" th:text="' type = '+${type}"></span>
+	           <span th:if="${query!=''}" th:text="' , keyword = '+${query}"></span>
+           </strong>
+           
        </div>
-        <p>&nbsp;</p>
-        <div style="font-size: 1em">
+       <div style="font-size: 1em; margin-top:2em">
             <table class="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Stu.no</th>
+                    <th scope="col">Student number</th>
                     <th scope="col">First name</th>
                     <th scope="col">Middle name</th>
                     <th scope="col">Last name</th>
                     <th scope="col">Current GPA</th>
                     <th scope="col">Enrolled</th>
-                    <th scope="col">Int.</th>
                     <th scope="col">&nbsp;</th>
                     <th scope="col">&nbsp;</th>
                 </tr>
@@ -54,28 +64,17 @@
                     <td th:text="${stu.lastName}"></td>
                     <td th:text="${stu.cgpa}"></td>
                     <td th:text="${stu.enrollmentDate}"></td>
-                    <td>
-                    	<span th:text="${stu.isInternational} ? 'yes' : 'no'"></span>
-                    </td>
+                    <!-- <td>
+                    	<span th:if="${stu.isInternational}">Yes</span>
+                    	<span th:unless="${stu.isInternational}">No</span>
+                    </td> -->
                     <td><a th:href="@{'/eregistrar/student/edit/{studentId}'(studentId=${stu.studentId})}">Edit</a></td>
                     <td><a data-toggle="modal" data-target="#confirmDeleteStudentModal" th:href="@{'/eregistrar/student/delete/' + ${stu.studentId}}">Delete</a></td>
                 </tr>
                 </tbody>
             </table>
-            <!-- Pagination -->
-            <div th:fragment="page">
-                <ul class="pagination" >
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">Pages: </a>
-                    </li>
-                    <li th:each="i : ${#numbers.sequence(1, students.totalPages)}"
-                        th:class="${currentPageNo}==${i-1}?'page-item active':'page-item'">
-                        <a th:href="@{/eregistrar/student/list(pageno=${i-1})}"
-                           th:text="${i}" class = "page-link"></a>
-                    </li>
-                </ul>
-            </div>
-
+             <!-- Pagination -->
+           
         </div>
     </div>
     <!-- Modal -->

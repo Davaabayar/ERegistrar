@@ -28,7 +28,7 @@ public class StudentController {
 		this.studentService = studentService;
 	}
 	
-	@GetMapping(value = {"/eregistrar/students/list"})
+	@GetMapping(value = {"/eregistrar/student/list"})
 	public ModelAndView listStudents(@RequestParam(defaultValue = "0") int pageno) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("students", studentService.getAllStudentsPaged(pageno));
@@ -51,7 +51,7 @@ public class StudentController {
 			return "student/new";
 		}
 		student = studentService.saveStudent(student);
-		return "redirect:/eregistrar/students/list";  
+		return "redirect:/eregistrar/student/list";  
 	}
 	
 	@GetMapping(value= {"/eregistrar/student/edit/{studentId}"})
@@ -73,12 +73,22 @@ public class StudentController {
 			return "student/edit";
 		}
 		student = studentService.saveStudent(student);
-		return "redirect:/eregistrar/students/list";
+		return "redirect:/eregistrar/student/list";
 	}
 	
 	@GetMapping(value= {"/eregistrar/student/delete/{studentId}"})
 	public String deleteStudent(@PathVariable Long studentId, Model model) {
 		studentService.deleteStudentById(studentId);
-		return "redirect:/eregistrar/students/list";
+		return "redirect:/eregistrar/student/list";
 	}
+
+	@GetMapping(value= {"/eregistrar/student/search"})
+	public ModelAndView searchStudents(@RequestParam(value= "query",required=false) String query,@RequestParam(value= "type",required=false) String type, @RequestParam(defaultValue = "0") int pageno) {
+		ModelAndView mav = new ModelAndView();	
+		mav.setViewName("student/search");				
+		mav.addObject("students", studentService.searchStudentsPaged(query, type, pageno));	
+		mav.addObject("query", query);	
+		mav.addObject("type", type);
+		return mav;
+	}	
 }
